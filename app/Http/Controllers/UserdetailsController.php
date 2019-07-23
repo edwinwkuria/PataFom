@@ -45,9 +45,12 @@ class UserdetailsController extends Controller
      * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(User $user)
     {
-        //
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        //return $user;
+        return view ('auth.showuserprofile', compact('user'));
     }
 
     /**
@@ -91,7 +94,7 @@ class UserdetailsController extends Controller
         $updateuser = User::find($id);
         $updatenow = $updateuser->update($request->all());
 		
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
@@ -100,8 +103,12 @@ class UserdetailsController extends Controller
      * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(User $user)
     {
-        //
+        $id = auth()->user()->id;
+        $deleteuser =User::find($id);
+        $deletenow = $deleteuser->delete();
+
+        return redirect('/');
     }
 }

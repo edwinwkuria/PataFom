@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    @include('layouts.head')
-</head>
-<body>
-    <div id="app">
-    @include('layouts.menubar')<!--
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -15,15 +7,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-                    <!-- Left Side Of Navbar --><!--
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                    </ul>-->
+                    </ul>
 
-                    <!-- Right Side Of Navbar --><!--
-                    <ul class="navbar-nav ml-auto">-->
-                        <!-- Authentication Links --><!--
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -36,36 +28,38 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->firstname }}  {{ Auth::user()->lastname }}<span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
-
+                                    </a></li>
+                                    <li class='divider'></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        View upcoming events
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        View past events
+                                    </a></li>
+                                    <li class='divider'></li>
+                                    <li><a class="dropdown-item" href="/User/{{ Auth::user()->id }}">
+                                        View Profile
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="/User/{{ Auth::user()->id }}/edit">
+                                        Edit profile
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        Delete Profile
+                                    </a></li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
-                        @endguest
+                                </ul>
+                            @endguest
                     </ul>
                 </div>
             </div>
-        </nav>-->
-
-            @yield('content')
-    </div>
-</body>
-<!--bootstrap scripts-->
-<!--
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
-</html>
+        </nav>
