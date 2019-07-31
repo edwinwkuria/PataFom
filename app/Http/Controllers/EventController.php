@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\event;
+use App\eventphoto;
 use Illuminate\Http\Request;
+use App\Http\Requests\UploadRequest;
 
 class EventController extends Controller
 {
@@ -14,7 +16,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = event::with('eventphoto')->get();
+        //return ($events);
+        return view ('welcome', compact('events'));
     }
 
     /**
@@ -24,7 +28,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view ('Event.createevent');
     }
 
     /**
@@ -33,9 +37,26 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadRequest $request)
     {
-        //
+        $events= event::create($request->all());
+        $filename = $request -> photos ->store('eventimages');
+        eventphoto::create([
+        'eventname'=>$request-> eventname,
+        'eventlocation'=>$request-> eventlocation,
+        'eventcost'=>$request-> eventcost,
+        'eventtime'=>$request-> eventtime,
+        'eventdate'=>$request -> eventdate,
+        'eventdescription'=>$request-> eventdescription,
+        'eventorganizer'=>$request-> eventorganizer,
+        'eventcontactemail'=>$request-> eventcontactemail,
+        'eventcontactphone'=>$request -> eventcontactphone,
+        'event_id'=>$events->id,
+        'filename' => $filename,
+        ]);
+        //return ($request-> photos);
+
+        return redirect ('/');
     }
 
     /**

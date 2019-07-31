@@ -7,4 +7,6 @@ Database Tables: Users, Events, User_Type, Event_User, Comment_Event, Category_E
 
 User Table Fields: FirstName, LastName, Email, Phone, AltPhone, Occupation(Student, Employed, Self Employed), School( for students), Location (Town)(Prefill from google location), Gender, Date of Birth.
 
+Events Table Fields: EventName, EventLocation, Eventtime, EventDate, Eventcost, EventDescription, EventPoster, EventOrganizer, EventContactEmail, EventContactPhone, EventAvailableSeats, Eventcategories
+
 #Intrests(Curated from Eventbrite): Music, Business, Food and Drink, Community, Arts, Film and media, Sports and fitness, Health, Science and Tech, Travel and outdoor, Charity and Causes, Spirituality, Family and Education, Holiday, Goverment, Fashion, Home and Lifestyle, Auto boat and air, Hobbies, School activities.
