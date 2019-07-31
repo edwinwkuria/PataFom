@@ -4,7 +4,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>PataFom</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,3 +17,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!-- Bootstrap CDN-->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+    .navbar { margin-bottom: 0 }
+</style>

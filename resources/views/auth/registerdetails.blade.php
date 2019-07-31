@@ -5,85 +5,65 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Just a few details from you and we will have you registered</div>
+                <div class="card-header">Update your profile</div>
 
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('register') }}"> 
-                        @csrf
+                    <form class="form-horizontal" method="POST" action="/User/{{$user ->id }}"> 
+                                    {{method_field('PATCH')}}
+                                   {{ csrf_field() }}
 
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">First Name <span class="text-danger">*</span></label>
-                          <div class="col-md-8 col-sm-9">
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                          <label class="control-label col-sm-4">First Name <span class="text-danger">*</span></label>
+                          <div class="col-md-8">
                             <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="name" class="form-control" placeholder="Eg John" name="firstname" id="firstname" value="">
+                            <input type="name" class="form-control" name="firstname" id="firstname" value="{{ $user ->firstname }}">
                             </div>
                           </div>
                         </div>
 
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Last Name <span class="text-danger">*</span></label>
-                          <div class="col-md-8 col-sm-9">
+                        <div class="form-group col-md-6">
+                          <label class="control-label col-sm-4">Last Name <span class="text-danger">*</span></label>
+                          <div class="col-md-8">
                             <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user  "></i></span>
-                            <input type="name" class="form-control" placeholder="Eg Doe" name="lastname" id="lastname" value="">
+                            <input type="name" class="form-control" name="lastname" id="lastname" value="{{ $user ->lastname }}">
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Email <span class="text-danger">*</span></label>
-                        <div class="col-md-8 col-sm-9">
+                        <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label class="control-label col-sm-4">Email <span class="text-danger">*</span></label>
+                        <div class="col-md-8">
                               <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                              <input type="email" class="form-control" placeholder="Eg example@email.com" name="email" id="email" value="">
+                              <input type="text" class="form-control" name="email" id="email" value="{{ $user ->email }}">
                              </div>
                         </div>
                         </div>
 
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Phone Number <span class="text-danger">*</span></label>
-                          <div class="col-md-5 col-sm-8">
+                        <div class="form-group col-md-4">
+                          <label class="control-label col-sm-4">Phone<span class="text-danger">*</span></label>
+                          <div class="col-md-8">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                            <input type="text" class="form-control"placeholder="Eg 0700999000" name="phonenumber" id="phonenumber" value="">
+                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{ $user ->phonenumber }}">
                             </div>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Alternate No. <br></label>
-                          <div class="col-md-5 col-sm-8">
+                        <div class="form-group col-md-3">
+                          <label class="control-label col-sm-3">Alt. <br></label>
+                          <div class="col-md-9">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                            <input type="text" class="form-control" placeholder="Eg 0799000999 (if any)" name="altphonenumber" id="altphonenumber" value="">
+                            <input type="text" class="form-control" name="altphonenumber" id="altphonenumber" value="{{ $user ->altphonenumber }}">
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Set Password <span class="text-danger">*</span></label>
-                          <div class="col-md-5 col-sm-8">
-                            <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="Choose password (5-15 chars)" value="">
-                           </div>   
-                          </div>
-                        </div>
-                        <!--
-                        <div class="form-group">
-                          <label class="control-label col-sm-3">Confirm Password <span class="text-danger">*</span></label>
-                          <div class="col-md-5 col-sm-8">
-                            <div class="input-group">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                              <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm your password" value="">
-                            </div>  
-                          </div>
-                        </div>
-                        -->
-        <!--
-        <div class="form-group">
-          <label class="control-label col-sm-3">Date of Birth <span class="text-danger">*</span></label>
-          <div class="col-xs-8">
+        <div class="form-row">
+        <div class="form-group col-md-6">
+          <label class="control-label col-md-5">Date of Birth </label>
+          <div class="col-md-7">
             <div class="form-inline">
               <div class="form-group">
                 <select name="dd" class="form-control">
@@ -104,8 +84,8 @@
           </div>
         </div>
     
-        <div class="form-group">
-          <label class="control-label col-sm-3">Gender <span class="text-danger">*</span></label>
+        <div class="form-group col-md-6">
+          <label class="control-label col-sm-3">Gender</label>
           <div class="col-md-8 col-sm-9">
             <label>
             <input name="gender" type="radio" value="Male" checked>
@@ -116,13 +96,40 @@
             Female </label>
           </div>
         </div>
--->
-        <div class="form-group">
-          <div class="col-xs-offset-3 col-md-8 col-sm-9"><span class="text-muted"><span class="label label-danger">Note:-</span> By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Policy</a>, including our <a href="#">Cookie Use</a>.</span> </div>
-        </div>
+      </div>
+
+            <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="control-label col-sm-5">Occupation </span></label>
+            <div class="col-md-7">
+                  <div class="input-group">
+                  <input type="text" class="form-control" name="occupation" id="occupation" value="{{ $user ->occupation }}">
+                 </div>
+            </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label class="control-label col-sm-4">Location<span class="text-danger">*</span></label>
+              <div class="col-md-8">
+                <div class="input-group">
+                <input type="text" class="form-control" name="location" id="location" value="{{ $user ->location }}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="control-label col-sm-4">School <br></label>
+              <div class="col-md-8">
+                <div class="input-group">
+                <input type="text" class="form-control" name="school" id="school" value="{{ $user ->school }}">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-10">
-            <input name="Submit" type="submit" value="register" class="btn btn-primary">
+            <input name="Submit" type="submit" value="Update Profile" class="btn btn-primary">
           </div>
         </div>
         @if ($errors->any())
