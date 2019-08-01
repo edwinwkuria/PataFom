@@ -20,3 +20,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'EventController@index')->name('home');
 Route::resource('User','UserdetailsController');
 Route::resource('Event','EventController');
+Route::resource('comment','CommentsController');

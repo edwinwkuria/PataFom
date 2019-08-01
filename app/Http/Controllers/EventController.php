@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\comments;
+use App\categories;
 use App\event;
 use App\eventphoto;
 use Illuminate\Http\Request;
@@ -17,9 +19,10 @@ class EventController extends Controller
      */
     public function index()
     {
+        $categories =categories::all();
         $events = event::with('eventphoto')->get();
         //return ($events);
-        return view ('welcome', compact('events'));
+        return view ('welcome', compact('events','categories'));
     }
 
     /**
@@ -68,12 +71,12 @@ class EventController extends Controller
      */
     public function show(event $event, $id)
     {
-
-        $events = event::with('eventphoto')->get();
+        $categories =categories::all();
+        $events = event::with('eventphoto','comments')->get();
         $showevent = $events->where('id', $id);
         $showevent = $showevent->first();
         //return ($showevent);
-        return view('event.viewevent',compact('showevent'));
+        return view('event.viewevent',compact('showevent','categories'));
     }
 
     /**
