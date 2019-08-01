@@ -9,6 +9,7 @@ use App\Http\Requests\UploadRequest;
 
 class EventController extends Controller
 {
+    //$events = event::with('eventphoto')->get();
     /**
      * Display a listing of the resource.
      *
@@ -65,9 +66,14 @@ class EventController extends Controller
      * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(event $event)
+    public function show(event $event, $id)
     {
-        //
+
+        $events = event::with('eventphoto')->get();
+        $showevent = $events->where('id', $id);
+        $showevent = $showevent->first();
+        //return ($showevent);
+        return view('event.viewevent',compact('showevent'));
     }
 
     /**

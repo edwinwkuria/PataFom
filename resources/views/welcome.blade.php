@@ -113,17 +113,7 @@
   <div class="container">
 
     <div class="row">
-
-      <div class="col-lg-2">
-
-        <h5 class="my-4">Filter by category</h5>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
-        </div>
-
-      </div>
+      @include('Event.eventmenu')
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-10">
@@ -159,7 +149,7 @@
                       @foreach ($events as $event)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="{{$event -> eventphoto['filename']}} " alt=""></a>
+              <a href="Event/{{ $event -> id}}"><img class="card-img-top" src="{{$event -> eventphoto['filename']}} " alt=""></a>
               <div class="card-body-fluid">
                 <div class="col-lg-3 col-md-3">
                   <h2>Jul</h2>
@@ -167,11 +157,12 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                 <h4 class="card-title">
-                  <a href="#">{{ $event-> eventname }}</a>
+                  <a href="Event/{{ $event -> id}}">{{ $event-> eventname }}</a>
                 </h4>
                 <h5>Ksh. {{$event-> eventcost}}/=</h5>
                 <h5> <i class="glyphicon glyphicon-pushpin"></i>{{ $event-> eventlocation }}</h5>
-                </div></div>
+                </div>
+              </div>
               <div class="card-footer">
 
                 <small class="text-muted"> + Register </small>

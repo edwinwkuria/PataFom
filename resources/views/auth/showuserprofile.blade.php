@@ -81,7 +81,7 @@
             </div>
           </div>
         </div>
-    
+
         <div class="form-group col-md-6">
           <label class="control-label col-sm-3">Gender</label>
           <div class="col-md-8 col-sm-9">
@@ -121,6 +121,19 @@
                 <input type="text" class="form-control" name="school" id="school" value="{{ $user ->school }}" readonly>
                 </div>
               </div>
+            </div>
+          </div>
+
+              <select class="mdb-select md-form" multiple>
+                <option value="" disabled selected>Choose your country</option>
+                <option value="1">USA</option>
+                <option value="2">Germany</option>
+                <option value="3">France</option>
+                <option value="3">Poland</option>
+                <option value="3">Japan</option>
+              </select>
+              <label class="mdb-main-label">Label example</label>
+
             </div>
           </div>
         </form>
