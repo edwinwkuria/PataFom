@@ -21,3 +21,4 @@ Route::get('/', 'EventController@index')->name('home');
 Route::resource('User','UserdetailsController');
 Route::resource('Event','EventController');
 Route::resource('comment','CommentsController');
+Route::get('/User/{User}/Events', 'eventUserController@show');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\eventUser;
+use App\User;
 use App\comments;
 use App\categories;
 use App\event;
@@ -32,6 +34,7 @@ class EventController extends Controller
      */
     public function create()
     {
+
         return view ('Event.createevent');
     }
 
