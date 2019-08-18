@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\categories;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,6 +46,16 @@ class User extends Authenticatable
             'id',
             'id',
             'event_id',
+        );
+    }
+    public function categories(){
+        return $this ->hasManyThrough(
+            categories::class,
+            userCategories::class,
+            'user_id',
+            'categoryid',
+            'id',
+            'category_id',
         );
     }
 }

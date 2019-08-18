@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\userCategories;
+use App\categories;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -48,9 +50,14 @@ class UserdetailsController extends Controller
     public function show(User $user)
     {
         $id = auth()->user()->id;
+        $categories =categories::all();
+        $usercategories = User::with('categories')->get();
         $user = User::find($id);
-        //return $user;
-        return view ('auth.showuserprofile', compact('user'));
+        $usercategories =$usercategories ->where('id',$id)->pluck('categories')->first();
+        $usercategories= $usercategories->pluck('categoryid')->toArray();
+        //$usercategories =$usercategories[0]->categories->pluck('categoryid');
+        //return $usercategories;
+        return view ('auth.showuserprofile', compact('user','categories','usercategories',));
     }
 
     /**
@@ -61,11 +68,14 @@ class UserdetailsController extends Controller
      */
     public function edit(User $user)
     {
-
-    	$id = auth()->user()->id;
+        $id = auth()->user()->id;
+        $categories =categories::all();
+        $usercategories = User::with('categories')->get();
         $user = User::find($id);
-        //return $user;
-        return view ('auth.registerdetails', compact('user'));
+        $usercategories =$usercategories ->where('id',$id)->pluck('categories')->first();
+        $usercategories= $usercategories->pluck('categoryid')->toArray();
+        //return $usercategories;
+        return view ('auth.registerdetails', compact('user','categories','usercategories'));
     }
 
     /**
@@ -79,8 +89,11 @@ class UserdetailsController extends Controller
     {
     	//dd('Hello');
     	$id = auth()->user()->id;
-    	//return $request;
-    	
+        /*$request = $request->category;
+        $request =implode(", ",$request);
+        $request =explode(", ",$request);
+    	return $request;
+    	*/
         $validatedata = $request->validate([
             'gender'=>  ' max:7',
             'occupation' => 'max:255',
@@ -89,8 +102,12 @@ class UserdetailsController extends Controller
             'School' => 'max:255',
 
         ]);
-        //User::where('user',$user)->update($request->all());
-        //User::find($user)->update($request->all());
+        $deletecategories =userCategories::where('user_id', $id);
+        $deletecategories =$deletecategories->delete();
+        foreach( $request -> category as $category)
+            //return($category);
+        $updatecategory = userCategories::create([
+            'user_id' => $id, 'category_id'=> $category ]);
         $updateuser = User::find($id);
         $updatenow = $updateuser->update($request->all());
 		

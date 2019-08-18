@@ -11,7 +11,7 @@ use App\eventUser;
 class event extends Model
 {
      protected $fillable = [
-        'eventname', 'eventlocation', 'eventcost', 'eventdate','eventseats', 'eventorganizer','eventcontactemail','eventcontactphone','eventdescription',
+        'eventname', 'eventlocation', 'eventcost', 'eventdate','eventseats', 'eventorganizer','eventcontactemail','eventcontactphone','eventdescription','photo_id',
     ];
 
     public function eventphoto()
@@ -29,6 +29,16 @@ class event extends Model
             'id',//Local key on rerefence table
             'id',//Local key on this table
             'user_id',// Foreign key on intermediate table
+        );
+    }
+    public function categories(){
+        return $this ->hasManyThrough(
+            categories::class,
+            eventCategory::class,
+            'event_id',
+            'categoryid',
+            'id',
+            'category_id',
         );
     }
 

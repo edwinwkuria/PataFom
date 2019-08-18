@@ -80,7 +80,7 @@
                                     <li><a class="dropdown-item" href="#">
                                         View upcoming events
                                     </a></li>
-                                    <li><a class="dropdown-item" href="/User/{{ Auth::user()->id}}/Events">
+                                    <li><a class="dropdown-item" href="/EventUser/{{ Auth::user()->id}}">
                                         View Events
                                     </a></li>
                                     <li class='divider'></li>
