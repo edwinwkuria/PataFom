@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\eventCategory;
+use App\eventUser;
+use App\User;
+use App\comments;
+use App\categories;
 use App\event;
 use App\eventphoto;
 use Illuminate\Http\Request;
@@ -17,9 +22,10 @@ class EventController extends Controller
      */
     public function index()
     {
+        $categories =categories::all();
         $events = event::with('eventphoto')->get();
         //return ($events);
-        return view ('welcome', compact('events'));
+        return view ('welcome', compact('events','categories'));
     }
 
     /**
@@ -29,7 +35,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view ('Event.createevent');
+        $categories =categories::all();
+        return view ('Event.createevent', compact('categories'));
     }
 
     /**
@@ -43,20 +50,17 @@ class EventController extends Controller
         $events= event::create($request->all());
         $filename = $request -> photos ->store('eventimages');
         eventphoto::create([
-        'eventname'=>$request-> eventname,
-        'eventlocation'=>$request-> eventlocation,
-        'eventcost'=>$request-> eventcost,
-        'eventtime'=>$request-> eventtime,
-        'eventdate'=>$request -> eventdate,
-        'eventdescription'=>$request-> eventdescription,
-        'eventorganizer'=>$request-> eventorganizer,
-        'eventcontactemail'=>$request-> eventcontactemail,
-        'eventcontactphone'=>$request -> eventcontactphone,
         'event_id'=>$events->id,
         'filename' => $filename,
         ]);
-        //return ($request-> photos);
-
+        $eventid = $events->id;
+        $eventphoto= eventphoto::where('event_id',$eventid)->first();
+        $eventphoto= $eventphoto->Photoid;
+        $eventphotoid = event::find($eventid)->update(['photo_id'=> $eventphoto],);
+        foreach( $request -> category as $category){
+        $eventcategory = eventCategory::create([
+            'event_id' => $events->id, 'category_id'=> $category ]);}
+        //return ($eventphoto);
         return redirect ('/');
     }
 
@@ -68,12 +72,12 @@ class EventController extends Controller
      */
     public function show(event $event, $id)
     {
-
-        $events = event::with('eventphoto')->get();
+        $categories =categories::all();
+        $events = event::with('eventphoto','comments')->get();
         $showevent = $events->where('id', $id);
         $showevent = $showevent->first();
         //return ($showevent);
-        return view('event.viewevent',compact('showevent'));
+        return view('event.viewevent',compact('showevent','categories'));
     }
 
     /**

@@ -126,6 +126,20 @@
             </div>
           </div>
 
+          <p>Please select categories you are intrested in:</p>
+            @foreach($categories as $category)
+                  @if(in_array($category->categoryid, $usercategories))      
+                <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="category" name="category[]"  value="{{ $category-> categoryid}}" checked>
+                  <label class="form-check-label" for="inlineCheckbox1">{{ $category->categoryName}}</label>
+                </div>
+                  @else
+                                <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="category" name="category[]"  value="{{ $category-> categoryid}}">
+                  <label class="form-check-label" for="inlineCheckbox1">{{ $category->categoryName}}</label>
+                </div>
+                 @endif
+              @endforeach 
 
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-10">

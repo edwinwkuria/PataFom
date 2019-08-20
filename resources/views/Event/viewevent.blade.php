@@ -66,19 +66,21 @@
         <div class="col-lg-12">
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
-            Product Reviews
-          </div>
-          <div class="card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            <hr>
-            <a href="#" class="btn btn-success">Leave a Review</a>
+            @forelse($showevent ->comments as $comment)
+            <p>{{ $comment-> comment}}</p>
+            <small class="text-muted">Posted by Anonymous on {{ $comment -> created_at }}</small>
+            @empty
+            <p>No comments</p>
+            @endforelse
+            <form method="POST" action="/comment">
+              @csrf
+            <div class="form-group">
+              <input type="text" name="event_id" id="event_id" value="{{ $showevent-> id}}" hidden>
+              <textarea class="form-control col-sm-12 " rows="3" id="comment" name="comment" placeholder=
+              "Leave a question or comment about the event" value="{{ old('eventdescription') }}"></textarea>
+            </div>
+            <button class="btn btn-success" type="submit"> Submit </button>
+          </form>
           </div>
         </div>
       </div>

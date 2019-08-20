@@ -108,6 +108,15 @@
               "Please enter a write up about your event" value="{{ old('eventdescription') }}"></textarea>
             </div>
 
+            <div class="form-group">
+              <label class="control-label col-sm-3">Event categories :</label>
+            @foreach($categories as $category)   
+                <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="category" name="category[]"  value="{{ $category-> categoryid}}">
+                  <label>{{ $category->categoryName}}</label>
+                </div>
+              @endforeach 
+            </div>
             <div class="form-control-group">  
                 <span class="control-label col-sm-3">Upload</span>
               <div class="form-control col-sm-9 ">

@@ -25,6 +25,8 @@ class CreateEventsTable extends Migration
             $table->string('eventorganizer');
             $table->string('eventcontactemail');
             $table->string('eventcontactphone');
+            $table->integer('photo_id')->nullable();
+            $table->foreign('photo_id')->references('Photoid')->on('eventphotos');
             $table->timestamps();
         });
     }

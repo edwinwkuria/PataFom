@@ -20,3 +20,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'EventController@index')->name('home');
 Route::resource('User','UserdetailsController');
 Route::resource('Event','EventController');
+Route::resource('comment','CommentsController');
+Route::get('/EventCategory/{EventCategory}', 'EventCategoryController@show');
+//Route::get('/userevent',function(){return view('Event.userevent');});
+Route::resource('EventUser','EventUserController');

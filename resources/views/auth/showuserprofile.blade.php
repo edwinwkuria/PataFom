@@ -124,19 +124,21 @@
             </div>
           </div>
 
-              <select class="mdb-select md-form" multiple>
-                <option value="" disabled selected>Choose your country</option>
-                <option value="1">USA</option>
-                <option value="2">Germany</option>
-                <option value="3">France</option>
-                <option value="3">Poland</option>
-                <option value="3">Japan</option>
-              </select>
-              <label class="mdb-main-label">Label example</label>
-
-            </div>
-          </div>
-        </form>
+          <p>Please select categories you are intrested in:</p>
+            @foreach($categories as $category)
+                  @if(in_array($category->categoryid, $usercategories))      
+                <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="category" name="category[]"  value="{{ $category-> categoryid}}" checked disabled>
+                  <label class="form-check-label" for="inlineCheckbox1">{{ $category->categoryName}}</label>
+                </div>
+                  @else
+                                <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="category" name="category[]"  value="{{ $category-> categoryid}}" disabled>
+                  <label class="form-check-label" for="inlineCheckbox1">{{ $category->categoryName}}</label>
+                </div>
+                 @endif
+              @endforeach
+            </form>
 
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-10">
