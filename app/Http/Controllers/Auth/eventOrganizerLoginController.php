@@ -94,7 +94,7 @@ class eventOrganizerLoginController extends Controller
         
         if (auth()->guard('event_organizer')->attempt(['organizerEmail' => $request->email, 'password' => $request->password])) {
 
-            dd('Hello');
+            return view('auth.organizerevents');
 
         }
 
