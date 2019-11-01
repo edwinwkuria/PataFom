@@ -45,7 +45,7 @@ class EventOrganizerController extends Controller
             'organizerPhone2' =>$request['organizerPhone2'],
             'password' => Hash::make($request['password']),
         ]);
-        return($request);
+        return view('auth.organizerevents');
     }
 
     /**

@@ -26,7 +26,11 @@
                 <h4 class="card-title">
                   <a href="Event/{{ $event -> id}}">{{ $event-> eventname }}</a>
                 </h4>
+                @if ($event-> eventcost == 0)
+                <h5>Free</h5>
+                @else
                 <h5>Ksh. {{$event-> eventcost}}/=</h5>
+                @endif
                 <h5> <i class="glyphicon glyphicon-pushpin"></i>{{ $event-> eventlocation }}</h5>
                 </div>
               </div>

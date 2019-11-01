@@ -14,5 +14,11 @@ Categories: Currently being added using tinker
 Comments: They work only need UI formatting and add comment to a comment.
 
 
-
 #Intrests(Curated from Eventbrite): Music, Business, Food and Drink, Community, Arts, Film and media, Sports and fitness, Health, Science and Tech, Travel and outdoor, Charity and Causes, Spirituality, Family and Education, Holiday, Goverment, Fashion, Home and Lifestyle, Auto boat and air, Hobbies, School activities.
+
+Bugs:
+Event organizer session management
+Event Date management
+Event payment page(Create a invoice tab with all the attendee categories which calculate and create an mpesa push)
+Collection methods: Patafom and nonpatafom paybill. 
+

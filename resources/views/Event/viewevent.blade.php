@@ -49,7 +49,13 @@
           </div>
           <div class="col-lg-9 col-md-9">
                 <h4>{{ $showevent-> eventname }}</h4>
-                <h5>Ksh. {{$showevent-> eventcost}}/=</h5>
+                <h5>
+                  @if ($showevent-> eventcost == 0)
+                  Free
+                  @else
+                  Ksh. {{$showevent-> eventcost}}/=
+                  @endif
+                </h5>
                 <h5> <i class="glyphicon glyphicon-pushpin"></i>{{ $showevent-> eventlocation }}</h5>
           </div>
           <div class="col-lg-12">
@@ -58,7 +64,13 @@
             <p class="card-text">{{ $showevent -> eventdescription }}</p>
             <h6><strong>Event organizer contact</strong></h6>
             <p>{{$showevent-> eventcontactemail}}</p>
-
+            <h6><strong>Seat availability</strong></h6>
+            $x = 60;
+            <div class="progress">
+            <div class="progress-bar" style="width: 80%;">
+                $x
+            </div>
+            </div>
             {{$showevent-> eventseats}}
           </div>
         </div>
