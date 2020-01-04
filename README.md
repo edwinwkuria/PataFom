@@ -5,7 +5,9 @@ Frameworks and languages used: 1. HTML/Blade  2. CSS/Sass  3. Laravel  4. PHP 5.
 
 Database Tables: Users, Events, Categories, Event_Organizer, Event_User, Category_Events, Category_User, (cool thing to do add profile picture)
 
-User Table Fields: FirstName, LastName, Email, Phone, AltPhone, Occupation(Student, Employed, Self Employed), School( for students), Location (Town)(Prefill from google location), Gender, Date of Birth.
+User Table Fields: Email, Password, Attendee/OrganizerID, Phone Number
+
+Attendee: FirstName, LastName, Email, Phone, AltPhone, Occupation(Student, Employed, Self Employed), School( for students), Location (Town)(Prefill from google location), Gender, Date of Birth.
 
 Events Table Fields: EventName, EventLocation, Eventtime, EventDate, Eventcost, EventDescription, EventPoster, EventOrganizer, EventContactEmail, EventContactPhone, EventAvailableSeats, Eventcategories
 

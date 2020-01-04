@@ -10,7 +10,7 @@
                 <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h5>Login </h4>
-                    <form action="/eventOrganizerLogin" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label>Email</label>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-6 login-form-2">
                     <h5>Create account </h5>
-                    <form action="/eventOrganizer" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label>Company/Organizing company</label>
@@ -38,15 +38,16 @@
                         </div>
                         <div class="form-group">
                           <label>Company/Organization Email
-                            <input type="text " class="form-control" name="organizerEmail" id="organizerEmail"/>
+                            <input type="text " class="form-control" name="email" id="email"/>
                         </div>
                         <div class="form-group">
                           <label>Contact person email
                             <input type="text" class="form-control" name="organizerEmail2" id="organizerEmail2"/>
                         </div>
+                        <input type="text" name="userType" id="userType" value="1" hidden>
                         <div class="form-group">
                           <label>Organization Phone Number
-                            <input type="text" class="form-control" name="organizerPhone" id="organizerPhone"/>
+                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"/>
                         </div>
                         <div class="form-group">
                           <label>Alt Phone Number
