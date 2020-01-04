@@ -24,3 +24,5 @@ Route::resource('comment','CommentsController');
 Route::get('/EventCategory/{EventCategory}', 'EventCategoryController@show');
 //Route::get('/userevent',function(){return view('Event.userevent');});
 Route::resource('EventUser','EventUserController');
+Route::resource('eventOrganizer','eventOrganizerController');
+Route::post('eventOrganizerLogin', 'Auth\eventOrganizerLoginController@login');

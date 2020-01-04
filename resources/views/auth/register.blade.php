@@ -41,12 +41,13 @@
                         </div>
                         </div>
 
+                          <input type="text" name="userType" id="userType" value="2" hidden>
                         <div class="form-group">
                           <label class="control-label col-sm-3">Phone Number <span class="text-danger">*</span></label>
                           <div class="col-md-5 col-sm-8">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                            <input type="text" class="form-control"placeholder="Eg 0700999000" name="phonenumber" id="phonenumber" value="">
+                            <input type="text" class="form-control"placeholder="Eg 0700999000" name="phoneNumber" id="phonenumber" value="">
                             </div>
                           </div>
                         </div>

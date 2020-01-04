@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\categories;
+use App\eventOrganizer;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+
+class EventOrganizerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view ('auth.registerorganizer');
     }
 
     /**
@@ -35,16 +37,24 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        eventOrganizer::create([
+            'organizerName' => $request['organizerName'],
+            'organizerEmail' =>$request['organizerEmail'],
+            'organizerEmail2' => $request['organizerEmail2'],
+            'organizerPhone' => $request['organizerPhone'],
+            'organizerPhone2' =>$request['organizerPhone2'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return view('auth.organizerevents');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\eventOrganizer  $eventOrganizer
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show(eventOrganizer $eventOrganizer)
     {
         //
     }
@@ -52,10 +62,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\eventOrganizer  $eventOrganizer
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit(eventOrganizer $eventOrganizer)
     {
         //
     }
@@ -64,10 +74,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\categories  $categories
+     * @param  \App\eventOrganizer  $eventOrganizer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, eventOrganizer $eventOrganizer)
     {
         //
     }
@@ -75,10 +85,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\categories  $categories
+     * @param  \App\eventOrganizer  $eventOrganizer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy(eventOrganizer $eventOrganizer)
     {
         //
     }

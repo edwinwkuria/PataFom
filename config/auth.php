@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'event_organizer' => [
+            'driver' => 'session',
+            'provider' =>'event_organizers',
+        ],
     ],
 
     /*
@@ -69,6 +73,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'event_organizers'=> [
+            'driver' => 'eloquent',
+            'model' => App\eventOrganizer::class,
         ],
 
         // 'users' => [
@@ -97,6 +105,12 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'event_organizers'=>[
+            'provider' =>'event_organizers',
+            //'email'=> 'auth.emails.password',
+            'table'=> 'password_resets',
+            'expire'=> 60,
         ],
     ],
 
