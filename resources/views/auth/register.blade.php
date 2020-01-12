@@ -16,7 +16,7 @@
                           <div class="col-md-8 col-sm-9">
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="name" class="form-control" placeholder="Eg John" name="firstname" id="firstname" value="">
+                            <input type="name" class="form-control" placeholder="Eg John" name="name" id="name" value="">
                             </div>
                           </div>
                         </div>

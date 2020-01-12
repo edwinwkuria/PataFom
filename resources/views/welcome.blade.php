@@ -36,7 +36,7 @@
               </div>
               <div class="card-footer">
             <a onclick="event.preventDefault();document.getElementById('register-form-{{ $event->id}}').submit();">
-              + Register
+              + Get your ticket 
             </a>
             @guest
 

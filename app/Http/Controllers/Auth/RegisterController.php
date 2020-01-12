@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Organizer;
+use App\Attendee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +50,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {   
+    {
         return Validator::make($data, [
             'userType' =>['required'],
             'phoneNumber' =>['required'],
@@ -65,11 +67,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        if ($data['userType'] == 1) {
+
+
+        $user = User::create([
             'email' => $data['email'],
             'userType' =>$data['userType'],
             'phoneNumber' => $data['phoneNumber'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->id;
+        $organizer = Organizer::create([
+            'user_id'=> $user,
+            'companyName' => $data['companyName'],
+            'companyEmail' => $data['companyEmail'],
+            'companyCountry' => $data['companyCountry'],
+            'companyPhoneNumber' => $data['companyPhoneNumber'],
+            'companyPhoneNumber2' => $data['companyPhoneNumber2'],
+            'companyProfile' => $data['companyProfile'],
+            ]);
+        return($organizer);
+        }
+        elseif ($data['userType'] == 2) {
+        $user = User::create([
+            'email' => $data['email'],
+            'userType' =>$data['userType'],
+            'phoneNumber' => $data['phoneNumber'],
+            'password' => Hash::make($data['password']),
+        ])->id;
+        $attendee = Attendee::create([
+            'user_id'=> $user,
+            'name' => $data['name'],
+            ]);
+        }
+        else{}
+
     }
 }
